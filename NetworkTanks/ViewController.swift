@@ -115,10 +115,10 @@ class ViewController: UIViewController {
             .tankList
             .asObservable()
             .bind(to: collectionView.rx.items(cellIdentifier: "TankCollectionViewCell", cellType: TankCollectionViewCell.self)) { row, model, cell in
-                    self.activityIndicator.stopAnimating()
-                    cell.configure(model: model)
-                    cell.layer.cornerRadius = 8
-                    cell.layer.masksToBounds = true
+                self.activityIndicator.stopAnimating()
+                cell.configure(model: model)
+                cell.layer.cornerRadius = 8
+                cell.layer.masksToBounds = true
             }.disposed(by: disposeBag)
         
         collectionView
@@ -142,7 +142,7 @@ class ViewController: UIViewController {
         guard let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {
             return
         }
-    
+        
         var keyboardHeight: CGFloat
         let bottom = self.view.safeAreaInsets.bottom - 20
         keyboardHeight = keyboardFrame.cgRectValue.height - bottom

@@ -4,6 +4,7 @@
 target 'NetworkTanks' do
 pod 'RxSwift', '6.5.0'
     	pod 'RxCocoa', '6.5.0'
+      pod 'MBProgressHUD', '~> 1.2.0'
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 

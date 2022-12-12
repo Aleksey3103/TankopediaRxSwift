@@ -20,6 +20,7 @@
 		847BB74E277A29B3001A1DCD /* TanksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847BB74D277A29B3001A1DCD /* TanksViewModel.swift */; };
 		848EA0402781D24300189D9D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 848EA03F2781D24300189D9D /* Main.storyboard */; };
 		84AC01C7277BDA3B0065F901 /* DetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AC01C6277BDA3B0065F901 /* DetailedViewController.swift */; };
+		84BAD8D1294742AD00B7B153 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BAD8D0294742AD00B7B153 /* ActivityIndicator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		847BB74D277A29B3001A1DCD /* TanksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TanksViewModel.swift; sourceTree = "<group>"; };
 		848EA03F2781D24300189D9D /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		84AC01C6277BDA3B0065F901 /* DetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedViewController.swift; sourceTree = "<group>"; };
+		84BAD8D0294742AD00B7B153 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		AE0B7608D7AB2ED394EEA393 /* Pods_NetworkTanks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NetworkTanks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -145,6 +147,7 @@
 		84803210292FB29400650474 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				84BAD8D0294742AD00B7B153 /* ActivityIndicator.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 				84AC01C7277BDA3B0065F901 /* DetailedViewController.swift in Sources */,
 				847BB737277A0C3D001A1DCD /* ViewController.swift in Sources */,
 				847BB749277A1674001A1DCD /* ModelTanks.swift in Sources */,
+				84BAD8D1294742AD00B7B153 /* ActivityIndicator.swift in Sources */,
 				4A755C5F292BA3EF00A6C2EC /* TankCollectionViewCell.swift in Sources */,
 				847BB733277A0C3D001A1DCD /* AppDelegate.swift in Sources */,
 				847BB74E277A29B3001A1DCD /* TanksViewModel.swift in Sources */,

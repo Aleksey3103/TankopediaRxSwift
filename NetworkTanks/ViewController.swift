@@ -9,6 +9,7 @@ import UIKit
 import Nuke
 import RxCocoa
 import RxSwift
+import MBProgressHUD
 
 class ViewController: UIViewController {
     var apiClient = RequestManager()
@@ -16,7 +17,6 @@ class ViewController: UIViewController {
     let sspacing: CGFloat = 0.0
     var bottomInset: CGFloat = 0
     var searchActive = false
-    var activityIndicator = UIActivityIndicatorView()
     let searchController = UISearchController(searchResultsController: nil)
     
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
@@ -40,14 +40,13 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.activityIndicator.startAnimating()
+        self.showIndicator(withTitle: "Loading...", and: "")
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.largeTitleDisplayMode = .automatic
         navigationItem.title = "Tankopedia"
         self.definesPresentationContext = true
         bindCollectionView()
         setupSearch()
-        setupActivityIndicator()
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
@@ -75,14 +74,6 @@ class ViewController: UIViewController {
     override func loadView() {
         super.loadView()
         self.initViewModel()
-    }
-    
-    func setupActivityIndicator() {
-        activityIndicator.center = self.view.center
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.style = .large
-        activityIndicator.color = UIColor.white
-        view.addSubview(activityIndicator)
     }
     
     func initViewModel() {
@@ -115,7 +106,7 @@ class ViewController: UIViewController {
             .tankList
             .asObservable()
             .bind(to: collectionView.rx.items(cellIdentifier: "TankCollectionViewCell", cellType: TankCollectionViewCell.self)) { row, model, cell in
-                self.activityIndicator.stopAnimating()
+                self.hideIndicator()
                 cell.configure(model: model)
                 cell.layer.cornerRadius = 8
                 cell.layer.masksToBounds = true
@@ -159,7 +150,7 @@ class ViewController: UIViewController {
 extension ViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 20, left: 15, bottom: 20, right: 15)
+        return UIEdgeInsets(top: 20, left: 10, bottom: 20, right: 10)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -178,3 +169,4 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
 extension ViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {}
 }
+

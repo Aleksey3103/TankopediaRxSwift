@@ -70,11 +70,15 @@ class TanksViewModel: ViewModelProtocol {
     private func closureSetUp() {
         apiClient
             .tanks
-            .subscribe(onNext: { [weak self] data in
+//            .subscribe(onNext: { [weak self] data in
+            .map({ ($0.data.keys, $0.data.values) })
+            .subscribe(onNext: { [weak self] keys, values in
                 var localDatum: [Datum] = []
-                data.data.keys.forEach {
-                    guard let value = data.data[$0] else { return }
-                    localDatum.append(value)
+//                data.data.keys.forEach {
+//                    guard let value = data.data[$0] else { return }
+//                    localDatum.append(value)
+                keys.indices.forEach {
+                    localDatum.append( values[$0])
                 }
                 self?.datum.accept(localDatum)
                 self?.createCell(datas: self?.datum ?? .init(value: []))
